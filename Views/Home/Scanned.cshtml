@@ -1,3 +1,5 @@
+@model QuPic.Models.Memories
+
 
 <div class="scanned">
     <div class="scanned-con">
@@ -10,17 +12,17 @@
         <div class="scanned-body">
             <div class="scanned-body-picture-con">
                 <div class="picture-con">
-                    <img src="~/img/sampleCardImg.jpg" alt="">
+                    <img src="@Model.Img" alt="">
                 </div>
             </div>
 
             <div class="scanned-body-message-con">
-                <p class="date">[ February 14, 2026 ]</p>
-                <p class="to medium-text">Dearest Mike Gliane,</p>
+                <p class="date">[ @Model.CreatedAt ]</p>
+                <p class="to medium-text">Dearest @Model.To,</p>
                 <div class="message-con">
-                    <p class="medium-text">I know we are miles apart right now, but I wanted to remind you that distance means nothing when someone means everything. Even if we don’t talk every single day, I feel your presence and support constantly. I miss our laughs and adventures, but I know our bondI know we are miles apart right now, but I wanted to remind you that distance means nothing when someone means everything. Even if we don’t talk every single day, I is strong enough to last any distance. Thank you for being my rock regardless of the map, and I’m counting down the days until we can make more memories together. You are the best friend anyone could ask for."</p>
+                    <p class="medium-text">@Model.Message</p>
                 </div>
-                <p class="from medium-text">- you</p>
+                <p class="from medium-text">- @Model.From</p>
             </div>
         </div>
     </div>

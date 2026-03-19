@@ -25,9 +25,14 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Scanned()
+    [HttpGet("Scanned/{guid}")]
+    public IActionResult Scanned(string guid) 
     {
-        return View();
+        var memories = _context.Memories.FirstOrDefault(c => c.Guid == guid);
+
+        if (memories == null) return NotFound();
+
+        return View(memories);
     }
 
     [HttpPost]
