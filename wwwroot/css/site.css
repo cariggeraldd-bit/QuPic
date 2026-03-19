@@ -30,6 +30,10 @@
     --text-s: 0%;
     --text-l: 20%;
 
+    --danger-h: 0;
+    --danger-s: 75%;
+    --danger-l: 60%;
+
     --white: hsl(var(--white-h), var(--white-s), var(--white-l));
     --white-muted-text: hsl(var(--white-h), var(--white-s), calc(var(--white-l) - 10%));
     --white-muted-bg: hsl(var(--white-h), var(--white-s), calc(var(--white-l) - 5%));
@@ -42,6 +46,8 @@
     --accent-sub: hsl(var(--accent-sub-h), var(--accent-sub-s), var(--accent-sub-l));
     --text: hsl(var(--text-h), var(--text-s), var(--text-l));
     --text-muted: hsl(var(--text-h), var(--text-s), calc(var(--text-l) + 5%));
+    --danger: hsl(var(--danger-h), var(--danger-s), var(--danger-l));
+
 
     /* THIS IS BASED ON THE `font-size: 16px;` in `html{}`. wherein, 1rem == 16px  */
     --space-1: 0.25rem; /* 4px */
@@ -106,6 +112,11 @@ img {
 svg {
     width: 100%;
     height: auto;
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
 }
 
 a {
@@ -183,6 +194,12 @@ button {
 
 .no-scroll {
     overflow: hidden;
+}
+
+.error {
+    font-size: var(--body-sm);
+    font-weight: var(--font-regular);
+    color: var(--danger) !important;
 }
 
 /* HERO */
@@ -462,6 +479,9 @@ button {
 }
 
 .qr-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 150px;
 }
 

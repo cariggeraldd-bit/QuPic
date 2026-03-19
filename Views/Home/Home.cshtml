@@ -166,7 +166,7 @@
 
                     <div class="create-body-col qr">
                         <div class="qr-con">
-                            <img src="~/img/qrSample.png" alt="qr">
+                            <canvas id="qrCanvas"></canvas>
                         </div>
 
                         <p class="medium-text">Scan Me!</p>
@@ -177,7 +177,7 @@
                     <p class="note"><span class="medium-text">Note:</span> This memory and message is linked to the QR code on your QuPic keychain. Once saved, scan the QR code anytime to view this memory</p>
 
                     <div class="create-body-button-con">
-                        <button class="primary-sub-button generate-qr">Generate QR</button>
+                        <button type="submit" form="memoryForm" class="primary-sub-button generate-qr">Generate QR</button>
                         <button class="primary-main-button scan-qr">Scan QR</button>
                     </div>
                 </div>

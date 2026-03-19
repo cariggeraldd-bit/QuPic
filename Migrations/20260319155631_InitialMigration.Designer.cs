@@ -12,7 +12,7 @@ using QuPic.Data;
 namespace QuPic.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260319100547_InitialMigration")]
+    [Migration("20260319155631_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -43,9 +43,14 @@ namespace QuPic.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("from");
 
-                    b.Property<byte[]>("Img")
+                    b.Property<string>("Guid")
                         .IsRequired()
-                        .HasColumnType("longblob")
+                        .HasColumnType("longtext")
+                        .HasColumnName("guid");
+
+                    b.Property<string>("Img")
+                        .IsRequired()
+                        .HasColumnType("longtext")
                         .HasColumnName("img");
 
                     b.Property<string>("Message")

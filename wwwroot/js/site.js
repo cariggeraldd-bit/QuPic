@@ -1,12 +1,36 @@
-﻿import {
-    debug
-} from "./utils.js";
+﻿import * as utils from "./utils.js";
 
 const PageScripts = {
     home: function () {
-        debug("Page", "Home");
-        
+        utils.debug("Page", "Home");
 
+        // LOCAL VARIABLE
+        const memoryForm = document.getElementById("memoryForm");
+        const from = document.getElementById("from");
+        const to = document.getElementById("to");
+        const message = document.getElementById("message");
+        const img = document.getElementById("img");
+
+        memoryForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const imgData = utils.validateImg(img); // CHECK IMG
+            utils.validateFormInput(memoryForm); // CHECKS FORM
+
+            const checkAllInputFields = utils.checkAllInputFields(memoryForm);
+
+            if (checkAllInputFields) {
+                const imgUrl = await utils.uploadImg(imgData);
+
+                utils.debug("Image url", imgUrl);
+                
+                 utils.debug("Data", from.value + " " + to.value + " " + message.value);
+                const qr = await utils.uploadMemories(imgUrl, to.value, from.value, message.value);
+
+                document.querySelector(".qr").classList.add("show");
+                QRCode.toCanvas(document.getElementById("qrCanvas"), qr);
+            }
+        });
     }
 }
 

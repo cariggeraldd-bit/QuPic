@@ -27,7 +27,10 @@ namespace QuPic.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     message = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    img = table.Column<byte[]>(type: "longblob", nullable: false),
+                    img = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    guid = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     created_at = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>

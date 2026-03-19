@@ -1,0 +1,41 @@
+
+
+Mahirap pala to hahahha
+
+1st Step -> Image Validation (Check if the image if the correct format `PNG` or `JPEG` and check for file size) *** DONE
+
+2nd Step -> Form Validation (Check if the form input contains something) *** DONE
+
+3rd Step -> Create a controller action that will handle the downloading and uploading of the downloaed image to the `Uploads/` root directory, then passed the 
+            image url to the fetch req from JavaScript. *** DONE
+
+4th Step -> Get the validatedd form data and the image url.
+
+5th Step -> Generate a QR code that contains a unique key that will be used to identify the clients memories (data)
+
+6th Step -> display the qr code
+
+7th Step -> When scanned get the redirection link and the unqiue key, the combine nalang `urlLink + "/" + unqiuekey`
+
+
+TODO - Revise of database schema, add a unique key (GUID) to be used and stored with the QR code
+
+
+QR Code concept
+
+    -- The QR code will only contain the necessary data to redirect and identify the clients data
+
+        It will contain:
+            - A unqiue key for identifying the memories inside the database
+
+            - A redirection link (Kailangan ng separate page for displaying the memories when scanned, diko sure if kaya kong magawa ung sa pop up).
+
+
+    NOTE!! No need na istore ung redirection link, unncessary na, lahat naman ng client mareredirect sa iisang link so mag set nalang ng `const redirect`
+            then use the unique id para ma populate lamh ung date dun.
+
+    put the `https://polygamistic-compunctiously-olga.ngrok-free.dev/View/69` inside the qr 
+
+    Create a HttpGet("/Home/Scanned/{id}") *** Use the id to get the data from the database
+
+    Then just use the ViewBag to display the data

@@ -1,9 +1,7 @@
-namespace QuPic.Models
+namespace QuPic.DTO
 {
-    public class Memories
+    public class ClientsMemoriesDto
     {
-        public int Id { get; set; }
-        
         public required string From { get; set; }
 
         public required string To { get; set; }
@@ -12,8 +10,5 @@ namespace QuPic.Models
 
         public required string Img { get; set; }
 
-        public required string Guid { get; set; }
-
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

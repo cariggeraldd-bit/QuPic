@@ -40,9 +40,14 @@ namespace QuPic.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("from");
 
-                    b.Property<byte[]>("Img")
+                    b.Property<string>("Guid")
                         .IsRequired()
-                        .HasColumnType("longblob")
+                        .HasColumnType("longtext")
+                        .HasColumnName("guid");
+
+                    b.Property<string>("Img")
+                        .IsRequired()
+                        .HasColumnType("longtext")
                         .HasColumnName("img");
 
                     b.Property<string>("Message")
