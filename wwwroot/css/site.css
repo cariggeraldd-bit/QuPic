@@ -34,6 +34,7 @@
     --white-muted-text: hsl(var(--white-h), var(--white-s), calc(var(--white-l) - 10%));
     --white-muted-bg: hsl(var(--white-h), var(--white-s), calc(var(--white-l) - 5%));
     --black: hsl(var(--black-h), var(--black-s), var(--black-l));
+    --black-muted-bg: hsla(var(--black-h), var(--black-s), var(--black-l), calc(var(--black-a) - 0.75));
     --grey-bg: hsl(var(--text-h), var(--text-s), var(--text-l));
     --primary-main: hsl(var(--primary-main-h), var(--primary-main-s), var(--primary-main-l));
     --primary-sub: hsl(var(--primary-sub-h), var(--primary-sub-s), var(--primary-sub-l));
@@ -89,6 +90,12 @@
 
 html {
     font-size: clamp(12px, 1vw, 16px);
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 img {
@@ -158,8 +165,24 @@ button {
     font-weight: var(--font-medium);
 }
 
+.semibold-text {
+    font-weight: var(--font-semi-bold);
+}
+
 .max-width {
     width: 100%;
+}
+
+.show {
+    display: flex !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.no-scroll {
+    overflow: hidden;
 }
 
 /* HERO */
@@ -261,6 +284,7 @@ button {
 .section-title {
     font-size: var(--section-title);
     font-weight: var(--font-bold);
+    text-align: center;
 }
 
 .about-us-body {
@@ -482,4 +506,160 @@ footer {
 
 .copyright-icon svg path {
     fill: var(--text);
+}
+
+/* MODAL POP UP */
+.modal {
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: var(--black-muted-bg);
+    z-index: 9999;
+    width: 100%;
+    height: 100vh;
+    padding: var(--space-5);
+}
+
+.modal-con {
+    display: none;
+    flex-direction: column;
+    background: var(--white);
+    border-radius: var(--radius-md);
+}
+
+.modal-con-parent {
+    flex: 1 1 100px;
+    display: none;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    background: transparent;
+    gap: var(--space-5);
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    background: var(--primary-sub);
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
+}
+
+.modal-header-con {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-3) 0px var(--space-3);
+}
+
+.modal-logo-con {
+    width: 55px;
+}
+
+.close-icon {
+    width: 20px;
+    cursor: pointer;
+}
+
+.close-icon svg path {
+    fill: var(--white);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px var(--space-3) var(--space-3) var(--space-3);
+}
+
+.thank-you-con {
+    width: 155px;
+}
+
+.modal-body-footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.modal-body-footer p {
+    text-align: center;
+}
+
+.modal-body-footer-head {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body-footer-heading {
+    font-size: var(--body-xl);
+}
+
+.modal-body-footer-subheading {
+    font-size: var(--body-sm);
+}
+
+.modal-body-footer-text {
+    font-size: var(--body-sm);
+    font-weight: var(--font-regular);
+}
+
+.picture-modal {
+    display: flex;
+    max-width: 370px;
+    max-height: 500px;
+}
+
+.modal-body-picture-con {
+    max-width: 305px;
+    padding: var(--space-4);
+}
+
+.modal-body-picture-con img {
+    border-radius: var(--radius-md);
+}
+
+.message-modal {
+    max-width: 370px;
+    max-height: 500px;
+    display: flex;
+}
+
+.message-modal .modal-body {
+    padding: 0px var(--space-7) var(--space-7) var(--space-7);
+    overflow-y: auto;
+}
+
+.modal-body-message-con {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    overflow-y: auto;
+}
+
+.modal-body-message-con .date {
+    text-align: end;
+    font-size: var(--body-sm);
+}
+
+.modal-body-message-con .to {
+    text-align: start;
+    font-size: var(--body-lg);
+}
+
+.message-con {
+    padding-left: var(--space-3);
+}
+
+.message-con p {
+    text-align: center;
+    font-size: var(--body-lg);
+}
+
+.modal-body-message-con .from {
+    text-align: end;
+    font-size: var(--body-lg);
 }
