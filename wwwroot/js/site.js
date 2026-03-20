@@ -41,11 +41,12 @@ const PageScripts = {
 
                 utils.debug("Image url", imgUrl);
                 
-                 utils.debug("Data", from.value + " " + to.value + " " + message.value);
+                utils.debug("Data", from.value + " " + to.value + " " + message.value);
                 const qr = await utils.uploadMemories(imgUrl, to.value, from.value, message.value);
 
                 document.querySelector(".qr").classList.add("show");
                 QRCode.toCanvas(document.getElementById("qrCanvas"), qr);
+                utils.sendEmailWithAttach("amandasanjuan25@gmail.com",  from.value, "qrCanvas"); // CHANGE email
                 utils.displayPopUp("memorySaved");
             }
         });

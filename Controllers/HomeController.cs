@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using QuPic.Models;
 using QuPic.Data;
 using QuPic.DTO;
+using QuPic.Services.Interfaces;
+using System.Net.Mail;
 
 
 namespace QuPic.Controllers;
@@ -12,12 +14,14 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly ApplicationDbContext _context;
     private readonly IWebHostEnvironment _env;
+    private readonly IEmailService _email;
 
-    public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IWebHostEnvironment env)
+    public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IWebHostEnvironment env, IEmailService email)
     {
         _logger = logger;
         _context = context;
         _env = env;
+        _email = email;
     }
 
     public IActionResult Home()
@@ -77,5 +81,26 @@ public class HomeController : Controller
         await _context.SaveChangesAsync();
 
         return Ok( new { url });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> SendEmailWithAttach([FromBody] EmailDto email)
+    {
+        if (string.IsNullOrEmpty(email.Img)) return BadRequest();
+
+        var base64 = email.Img.Split(',')[1];
+        var imageBytes = Convert.FromBase64String(base64);
+
+        var subject = $"{email.From} QR Code";
+        var body = "Here is your QR Code";
+
+         await _email.SendEmailWithAttachAsync(
+            email.To,             
+            subject,
+            body,
+            imageBytes
+        );
+
+        return Ok();
     }
 }

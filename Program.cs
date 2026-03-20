@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using QuPic.Data;
+using QuPic.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 var app = builder.Build();
 

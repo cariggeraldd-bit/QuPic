@@ -124,3 +124,23 @@ export function closePopUp() {
     modal.querySelectorAll(".show").forEach(p => p.classList.remove("show"));
     modal.classList.remove("show");
 }
+
+export async function sendEmailWithAttach(to, from, canvasId) {
+    const canvas = document.getElementById(canvasId);
+
+    const base64 = canvas.toDataURL("image/png");
+
+    debug("Base 64", base64);
+
+    await fetch("/Home/SendEmailWithAttach", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            To: to,
+            From: from,
+            Img: base64
+        })
+    });
+}
