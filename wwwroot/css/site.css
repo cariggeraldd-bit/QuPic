@@ -267,6 +267,11 @@ button:disabled {
     gap: var(--space-6);
 }
 
+.hero-keychain-con {
+    perspective: 500px;
+    transform-style: preserve-3d;
+}
+
 .hero-keychain {
     width: 20.625rem;
     animation: spin 3s linear infinite;
@@ -274,11 +279,11 @@ button:disabled {
 
 @keyframes spin {
     from {
-        transform: rotate(0deg);
+        transform: rotateY(0deg);
     }
 
     to {
-        transform: rotate(360deg);
+        transform: rotateY(360deg);
     }
 }
 
