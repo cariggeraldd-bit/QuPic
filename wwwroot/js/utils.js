@@ -144,3 +144,7 @@ export async function sendEmailWithAttach(to, from, canvasId) {
         })
     });
 }
+
+export function displayQr(canvasId) {
+    document.querySelector("." + canvasId).classList.add("show");
+}

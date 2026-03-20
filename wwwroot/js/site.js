@@ -49,7 +49,6 @@ const PageScripts = {
                     utils.debug("Data", from.value + " " + to.value + " " + message.value);
                     const qr = await utils.uploadMemories(imgUrl, to.value, from.value, message.value);
 
-                    document.querySelector(".qr").classList.add("show");
                     await QRCode.toCanvas(document.getElementById("qrCanvas"), qr);
 
                     await utils.sendEmailWithAttach("amandasanjuan25@gmail.com",  from.value, "qrCanvas"); // CHANGE email
@@ -61,6 +60,7 @@ const PageScripts = {
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = "Generate QR";
+                utils.displayQr("qr");
             }
         });
     }
