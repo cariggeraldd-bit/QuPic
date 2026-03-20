@@ -39,3 +39,7 @@ QR Code concept
     Create a HttpGet("/Home/Scanned/{id}") *** Use the id to get the data from the database
 
     Then just use the ViewBag to display the data
+
+
+
+    TODO -- Create a loading or waiting notification habang ginagawa ang qr code
