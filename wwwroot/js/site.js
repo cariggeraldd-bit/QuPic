@@ -54,13 +54,13 @@ const PageScripts = {
                     await utils.sendEmailWithAttach("amandasanjuan25@gmail.com",  from.value, "qrCanvas"); // CHANGE email
 
                     utils.displayPopUp("memorySaved");
+                    utils.displayQr("qr");
                 }
             } catch (err) {
                 utils.debug("Error", err);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = "Generate QR";
-                utils.displayQr("qr");
             }
         });
     }
